@@ -2,111 +2,72 @@
 
 ## Aim
 To implement Erosion and Dilation using Python and OpenCV.
+
 ## Software Required
 1. Anaconda - Python 3.7
 2. OpenCV
+
 ## Algorithm:
 ### Step1:
-<br>
-Import necessary packages
+Import the necessary packages.
 
 ### Step2:
-<br>
-Create a empty window and add text in it
+Create the text using cv2.putText.
 
 ### Step3:
-<br>
-create a structuring element
+Then create the structuring image for dilation/erosion.
+
 ### Step4:
-<br>
-Do the operation
+Apply erosion and dilation using plt.erode and plt.dilate.
 
 ### Step5:
-<br>
-Show the output image
+Plot the images using plt.imshow.
  
 ## Program:
 
+```
 # Import the necessary packages
-```
-import cv2
+
 import numpy as np
-```
+import cv2
+import matplotlib.pyplot as plt
+
 # Create the Text using cv2.putText
-```
-img= np.zeros((350,1400),dtype ='uint8')
+image = np.zeros((100,500),dtype = 'uint8')
 font = cv2.FONT_HERSHEY_SIMPLEX
-cv2.putText(img,'KRISHNA MICKEY',(15,200),font,5,(255),10,cv2.LINE_AA)
-cv2.imshow('created_text',img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-```
+cv2.putText(image,"FAREED",(5,70),font,2,(255),5,cv2.LINE_AA)
+plt.imshow(image,cmap='gray')
+plt.title('Input Text'), plt.xticks([]), plt.yticks([])
+plt.show()
+
 # Create the structuring element
-## For Erosion
-```
-erode1= np.ones((5,5),np.uint8)
-erode2 = cv2.getStructuringElement(cv2.MORPH_CROSS,(12,12))
-```
-## For Dilation
-```
-dilate1= np.ones((5,5),np.uint8)
-dilate2 = cv2.getStructuringElement(cv2.MORPH_CROSS,(12,12))
-```
+kernel=cv2.getStructuringElement(cv2.MORPH_CROSS,(7,7))
+
 # Erode the image
-```
-image_erode1  = cv2.erode(img,erode1)
-cv2.imshow('Eroded_image_1',image_erode1)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-
-image_erode2  = cv2.erode(img,erode2)
-cv2.imshow('Eroded_image_2',image_erode2)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-```
+image_erode=cv2.erode(image,kernel)
+plt.imshow(image_erode,cmap='gray')
+plt.title('Eroded Text'), plt.xticks([]), plt.yticks([])
+plt.show()
 
 # Dilate the image
+image_dilate=cv2.dilate(image,kernel)
+plt.imshow(image_dilate,cmap='gray')
+plt.title('Dilated Text'), plt.xticks([]), plt.yticks([])
+plt.show()
 ```
 
-image_dilate1  = cv2.dilate(img,dilate1)
-cv2.imshow('Dilated_image_1',image_dilate1)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-image_dilated2  = cv2.dilate(img,dilate2)
-cv2.imshow('Dilated_image_2',image_dilated2)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-
-
-```
 ## Output:
 
 ### Display the input Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+![image](https://github.com/MOHAMED-FAREED-22001617/EROSION-AND-DILATION/assets/121412904/c457ee19-2dd2-4ead-a092-09ca7eb6d0d2)
+
 
 ### Display the Eroded Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+![image](https://github.com/MOHAMED-FAREED-22001617/EROSION-AND-DILATION/assets/121412904/3ccd65d6-9a15-483f-96a8-f62c1880c87b)
 
 ### Display the Dilated Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+![image](https://github.com/MOHAMED-FAREED-22001617/EROSION-AND-DILATION/assets/121412904/19e5378d-3e62-4b0f-9770-72f61ba92cfb)
+
 
 ## Result
 Thus the generated text image is eroded and dilated using python and OpenCV.
